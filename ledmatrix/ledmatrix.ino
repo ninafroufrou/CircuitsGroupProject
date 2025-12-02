@@ -17,14 +17,14 @@ ShiftRegister74HC595<2> sr(2, 3, 4);
 #define ROW_9 13
 
 // Timing and animation control
-int RowDuration = 4000;
+int RowDuration = 500;
 int row = 0;
 unsigned long oldMicros = 0;
 int count = 0;
 int stretch = 20;
 
 // Matrix state: 10 rows × 10 columns
-int matrix[10][10] = {0};
+int matrix[10][10] = {{0}};
 
 void setup() {
   Serial.begin(9600);
