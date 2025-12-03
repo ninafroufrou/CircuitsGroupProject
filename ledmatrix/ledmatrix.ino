@@ -1,8 +1,8 @@
 #include <ShiftRegister74HC595.h>
 
 // Two chained 74HC595s: 16 outputs total
-// dataPin = 2, clockPin = 3, latchPin = D15
-ShiftRegister74HC595<2> sr(2, 3, D15);
+// dataPin = 2, clockPin = 3, latchPin = A1
+ShiftRegister74HC595<2> sr(2, 3, A1);
 
 // Direct Arduino pins for 10 rows
 #define ROW_0 4
@@ -87,21 +87,6 @@ void loop() {
   }
 }
 
-void resetMatrix() {
-  for (int r = 0; r < 10; r++)
-    for (int c = 0; c < 10; c++)
-      matrix[r][c] = 0;
-}
-
-// Example animation frames
-void sin1() { for (int c = 0; c < 10; c++) matrix[0][c] = 1; }
-void sin2() { for (int c = 0; c < 10; c++) matrix[1][c] = 1; }
-void sin3() { for (int c = 0; c < 10; c++) matrix[2][c] = 1; }
-void sin4() { for (int c = 0; c < 10; c++) matrix[3][c] = 1; }
-void sin5() { for (int c = 0; c < 10; c++) matrix[4][c] = 1; }
-void sin6() { for (int i = 0; i < 10; i++) matrix[i][i] = 1; }
-void sin7() { for (int i = 0; i < 10; i++) matrix[i][9 - i] = 1; }
-void sin8() { for (int r = 0; r < 10; r++) for (int c = 0; c < 10; c++) if ((r+c)%2==0) matrix[r][c]=1; }
 
 void updateMatrix(int activeRow) {
   // Turn off all rows first (LOW = off for NPN active-high)
