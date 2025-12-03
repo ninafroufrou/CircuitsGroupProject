@@ -1,8 +1,8 @@
 #include <ShiftRegister74HC595.h>
 
 // Two chained 74HC595s: 16 outputs total
-// dataPin = 2, clockPin = 3, latchPin = 4
-ShiftRegister74HC595<2> sr(2, 3, 4);
+// dataPin = 2, clockPin = 3, latchPin = A1
+ShiftRegister74HC595<2> sr(2, 3, D15);
 
 // Direct Arduino pins for 10 rows
 #define ROW_0 4
@@ -15,6 +15,10 @@ ShiftRegister74HC595<2> sr(2, 3, 4);
 #define ROW_7 11
 #define ROW_8 12
 #define ROW_9 13
+
+// Button on A0
+#define BUTTON_PIN A0
+
 
 // Timing and animation control
 int RowDuration = 500;
