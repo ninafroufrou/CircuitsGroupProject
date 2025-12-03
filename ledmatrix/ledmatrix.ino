@@ -1,7 +1,7 @@
 #include <ShiftRegister74HC595.h>
 
 // Two chained 74HC595s: 16 outputs total
-// dataPin = 2, clockPin = 3, latchPin = A1
+// dataPin = 2, clockPin = 3, latchPin = D15
 ShiftRegister74HC595<2> sr(2, 3, D15);
 
 // Direct Arduino pins for 10 rows
