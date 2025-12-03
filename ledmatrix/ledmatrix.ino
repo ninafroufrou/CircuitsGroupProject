@@ -100,17 +100,17 @@ void sin7() { for (int i = 0; i < 10; i++) matrix[i][9 - i] = 1; }
 void sin8() { for (int r = 0; r < 10; r++) for (int c = 0; c < 10; c++) if ((r+c)%2==0) matrix[r][c]=1; }
 
 void updateMatrix(int activeRow) {
-  // Turn off all rows first
-  digitalWrite(ROW_0, HIGH);
-  digitalWrite(ROW_1, HIGH);
-  digitalWrite(ROW_2, HIGH);
-  digitalWrite(ROW_3, HIGH);
-  digitalWrite(ROW_4, HIGH);
-  digitalWrite(ROW_5, HIGH);
-  digitalWrite(ROW_6, HIGH);
-  digitalWrite(ROW_7, HIGH);
-  digitalWrite(ROW_8, HIGH);
-  digitalWrite(ROW_9, HIGH);
+  // Turn off all rows first (LOW = off for NPN active-high)
+  digitalWrite(ROW_0, LOW);
+  digitalWrite(ROW_1, LOW);
+  digitalWrite(ROW_2, LOW);
+  digitalWrite(ROW_3, LOW);
+  digitalWrite(ROW_4, LOW);
+  digitalWrite(ROW_5, LOW);
+  digitalWrite(ROW_6, LOW);
+  digitalWrite(ROW_7, LOW);
+  digitalWrite(ROW_8, LOW);
+  digitalWrite(ROW_9, LOW);
 
   // Prepare outputs for columns
   uint8_t outputs[16];
@@ -124,17 +124,17 @@ void updateMatrix(int activeRow) {
   // Push to shift registers
   sr.setAll(outputs);
 
-  // Activate the current row (LOW = active if using N‑MOSFETs)
+  // Activate the current row (HIGH = active for NPN)
   switch (activeRow) {
-    case 0: digitalWrite(ROW_0, LOW); break;
-    case 1: digitalWrite(ROW_1, LOW); break;
-    case 2: digitalWrite(ROW_2, LOW); break;
-    case 3: digitalWrite(ROW_3, LOW); break;
-    case 4: digitalWrite(ROW_4, LOW); break;
-    case 5: digitalWrite(ROW_5, LOW); break;
-    case 6: digitalWrite(ROW_6, LOW); break;
-    case 7: digitalWrite(ROW_7, LOW); break;
-    case 8: digitalWrite(ROW_8, LOW); break;
-    case 9: digitalWrite(ROW_9, LOW); break;
+    case 0: digitalWrite(ROW_0, HIGH); break;
+    case 1: digitalWrite(ROW_1, HIGH); break;
+    case 2: digitalWrite(ROW_2, HIGH); break;
+    case 3: digitalWrite(ROW_3, HIGH); break;
+    case 4: digitalWrite(ROW_4, HIGH); break;
+    case 5: digitalWrite(ROW_5, HIGH); break;
+    case 6: digitalWrite(ROW_6, HIGH); break;
+    case 7: digitalWrite(ROW_7, HIGH); break;
+    case 8: digitalWrite(ROW_8, HIGH); break;
+    case 9: digitalWrite(ROW_9, HIGH); break;
   }
 }
