@@ -67,7 +67,7 @@ void setup() {
 
 void loop() {
   if (micros() >= oldMicros) {
-    oldMicros = micros() + RowDuration;
+  oldMicros += RowDuration;
 
     if (count == 0)        { resetMatrix(); sin1(); }
     if (count == stretch)  { resetMatrix(); sin2(); }
